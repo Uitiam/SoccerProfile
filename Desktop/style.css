@@ -1,0 +1,76 @@
+body {
+  background-color: black;
+}
+
+#collapseU5 {
+    text-align: center;
+}
+
+#collapseU6 {
+    text-align: center;
+}
+
+#collapseU7 {
+    text-align: center;
+}
+
+#collapseU8 {
+    text-align: center;
+}
+
+#collapseU9 {
+    text-align: center;
+}
+
+#collapseU10 {
+  text-align: center;
+}
+
+#header {
+  text-align: center;
+}
+
+#sidePanel {
+  background-color: black;
+  text-decoration: none;
+}
+
+#base_text {
+  font-size: 2em;
+  color: white;
+}
+
+#infoScreen {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.table {
+  margin: 0 0 0 0;
+}
+
+a {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+#kidCV {
+  width: 100%;
+}
+
+#infoDiv {
+  padding: 0%;
+  background-color: white;
+}
+
+.navButton a {
+  color: white;
+}
+
+.navButton a:visited {
+  color: white;
+}
