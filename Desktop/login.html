@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login - Soccer Pro-File</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <!-- Javascript Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse" role="navigation" style="margin: 0 0;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navButtons" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          Soccer Pro-File
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="navButtons">
+        <ul class="nav navbar-nav navbar-right">
+          <a role="button" class="btn-success btn-lg navButton" href="index.html">Home</a>
+          <a role="button" class="btn-success btn-lg navButton" href="about.html">About Us</a>
+          <a role="button" class="btn-success btn-lg navButton" href="contact.html">Contact Us</a>
+          <a role="button" class="btn-success btn-lg navButton" href="login.html">Login</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div id="loginBox" class="mainbox col-md-6 col-md-offset-3 col-sm-12" style="margin-top: 20px;">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">Sign In</div>
+          <div style="float:right; font-size: 80%; position: relative; top:-20px"><a href="#">Forgot password?</a></div>
+        </div>
+
+        <div style="padding-top:30px" class="panel-body">
+          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+          <form id="loginform" class="form-horizontal" role="form">
+              <div style="margin-bottom: 25px" class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Email Address">
+              </div>
+              <div style="margin-bottom: 25px" class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="login-password" type="password" class="form-control" name="password" placeholder="Password">
+              </div>
+              <div style="margin-bottom: 25px;">
+                <a role="button" class="btn btn-primary" href="#" style="color: white; float: right;">Login</a>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

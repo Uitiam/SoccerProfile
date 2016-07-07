@@ -1,13 +1,15 @@
 //user Class sets and creates user
-function Player(n, t) {
-    var name = n;
-    var team = t;
+function Player(iD) {
 
-    this.getName = funtion() {
-        return name;
+    var playerId = iD;
+
+    this.getPlayerId = function() {
+        return playerId;
     }
 
-    this.getTeam = fucntion() {
-        return team;
+    this.setPlayerId = function(newId) {
+        playerId = newId;
+        savePID(newId);
     }
+
 }

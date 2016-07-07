@@ -6,8 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" type="text/css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.polyfill.io/v1/polyfill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aja/0.4.1/aja.min.js"></script>
+
+    <script src="cv.js"></script>
+    <script src="fieldset.js"></script>
+    <script src="player.js"></script>
 </head>
 <body>
 
@@ -26,102 +33,45 @@
       </div>
       <div class="collapse navbar-collapse" id="navButtons">
         <ul class="nav navbar-nav navbar-right">
-              <button type="button" class="btn-success btn-lg navButton"><a href="index.html">Home</a></button>
-              <button type="button" class="btn-success btn-lg navButton"><a href="#">About Us</a></button>
-              <button type="button" class="btn-success btn-lg navButton"><a href="#">Contact Us</a></button>
-              <button type="button" class="btn-success btn-lg navButton"><a href="#">Login</a></button>
+          <a role="button" class="btn-success btn-lg navButton" href="index.html">Home</a>
+          <a role="button" class="btn-success btn-lg navButton" href="about.html">About Us</a>
+          <a role="button" class="btn-success btn-lg navButton" href="contact.html">Contact Us</a>
+          <a role="button" class="btn-success btn-lg navButton" href="login.html">Login</a>
         </ul>
       </div>
     </div>
   </nav>
 
   <div class="col-md-3 col-xs-12" id="sidePanel">
-    <br />
-    <div class="panel-group" id="accordion">
-      <div class="panel panel-danger">
-      <div class="panel-heading">
-      <h1 class="panel-title" id="header">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Child #1 <span class="glyphicon glyphicon-chevron-right" style="float: right;"></span></a>
-      </h1>
-      </div>
-        <div id="collapse1" class="panel-collapse collapse" style="text-align: center;">
-          <div class="panel-body">
-            <table class="table table-striped table-condensed bg-danger">
-              <tr><td><a href="#leagueHistory" class="page-scroll">League History</a></td></tr>
-              <tr><td><a href="#tournaments" class="page-scroll">Tournaments</a></td></tr>
-              <tr><td><a href="#academies" class="page-scroll">Academies</a></td></tr>
-              <tr><td><a href="#camps" class="page-scroll">Camps</a></td></tr>
-              <tr><td><a href="#compHistory" class="page-scroll">Competition History (Other)</a></td></tr>
-              <tr><td><a href="#clubs" class="page-scroll">Clubs</a></td></tr>
-              <tr><td><a href="#clubRankings" class="page-scroll">Club Rankings</a></td></tr>
-            </table>
-          </div>
-        </div>
-      </div>
 
-      <div class="panel panel-primary">
-      <div class="panel-heading">
-      <h1 class="panel-title" id="header">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseC2">Child #2 <span class="glyphicon glyphicon-chevron-right" style="float: right;"></span></a>
-      </h1>
-      </div>
-        <div id="collapseC2" class="panel-collapse collapse" style="text-align: center;">
-          <div class="panel-body">
-            <table class="table table-striped table-condensed bg-primary">
-              <tr><td><a href="#leagueHistory">League History</a></td></tr>
-              <tr><td><a href="#tournaments">Tournaments</a></td></tr>
-              <tr><td><a href="#academies">Academies</a></td></tr>
-              <tr><td><a href="#camps">Camps</a></td></tr>
-              <tr><td><a href="#compHistory">Competition History (Other)</a></td></tr>
-              <tr><td><a href="#clubs">Clubs</a></td></tr>
-              <tr><td><a href="#clubRankings">Club Rankings</a></td></tr>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel panel-warning">
-      <div class="panel-heading">
-      <h1 class="panel-title" id="header">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseC3">Child #3 <span class="glyphicon glyphicon-chevron-right" style="float: right;"></span></a>
-      </h1>
-      </div>
-        <div id="collapseC3" class="panel-collapse collapse" style="text-align: center;">
-          <div class="panel-body">
-            <table class="table table-striped table-condensed bg-warning">
-              <tr><td><a href="#leagueHistory">League History</a></td></tr>
-              <tr><td><a href="#tournaments">Tournaments</a></td></tr>
-              <tr><td><a href="#academies">Academies</a></td></tr>
-              <tr><td><a href="#camps">Camps</a></td></tr>
-              <tr><td><a href="#compHistory">Competition History (Other)</a></td></tr>
-              <tr><td><a href="#clubs">Clubs</a></td></tr>
-              <tr><td><a href="#clubRankings">Club Rankings</a></td></tr>
-            </table>
-          </div>
-        </div>
-      </div>
-
-    </div>
   </div>
 
   <!-- Info Div -->
 
   <div class="col-md-9 col-xs-12" id="infoDiv">
     <div class="container" id="infoScreen">
+
+      <div id="basicInfo">
+        <table class="table infoTable table-condensed">
+          <thead class="thead-inverse">
+            <th colspan="6"><h3>Personal Information</h3></th>
+          </thead>
+          <tbody>
+            <tr><td>First Name</td><td id="firstName"></td><td>Last Name</td><td id="lastName"></td><td>Nationality</td><td id="nationality"></td></tr>
+            <tr><td>Birth Year</td><td id="birthYear"></td><td>Age</td><td id="age"></td><td>Age Group</td><td id="ageGroup"></td></tr>
+            <tr><td>Club</td><td id="club"></td><td>Team</td><td id="team"></td><td>Coach</td><td id="coach"></td></tr>
+        </tbody>
+        </table>
+      </div>
+
+      <br />
+
       <div id="leagueHistory">
         <table class="table">
           <thead class="thead-inverse">
-            <th colspan="3"><h3>League History <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addLH"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
+            <th colspan="3"><h3>League History <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addLH"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
           </thead>
-          <tbody>
-            <tr><td rowspan="2"><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16635-200.png" style="height: 60px; width: auto;" /></td><td>Event Name</td><td>2015</td></tr>
-            <tr><td>Most Valuable Player</td><td>Surrey, BC</td></tr>
-
-            <tr><td rowspan="2"><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16635-200.png" style="height: 60px; width: auto;" /></td><td>Event Name</td><td>2015</td></tr>
-            <tr><td>Star Player</td><td>Abbotsford, BC</td></tr>
-
-            <tr><td rowspan="2"><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16635-200.png" style="height: 60px; width: auto;" /></td><td>Event Name</td><td>2015</td></tr>
-            <tr><td>Best Ever</td><td>Edmonton, AB</td></tr>
+          <tbody id="leagueHistoryBody">
           </tbody>
         </table>
       </div>
@@ -129,96 +79,58 @@
       <div id="tournaments">
         <table class="table">
           <thead class="thead-inverse">
-            <th colspan="3"><h3>Tournaments <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addTourney"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
+            <th colspan="3"><h3>Tournaments <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addTourney"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
           </thead>
-          <tbody>
-            <tr><td rowspan="2"><img src="http://www.iconsdb.com/icons/preview/orange/trophy-xxl.png" style="height: 50px; width: auto;" /></td><td>Tournament Name</td><td>2015</td></tr>
-            <tr><td>3rd Place</td><td>Surrey, BC</td></tr>
-
-            <tr><td rowspan="2"><img src="http://www.iconsdb.com/icons/preview/orange/trophy-xxl.png" style="height: 50px; width: auto;" /></td><td>Tournament Name</td><td>2015</td></tr>
-            <tr><td>1st Place</td><td>Abbotsford, BC</td></tr>
-
-            <tr><td rowspan="2"><img src="http://www.iconsdb.com/icons/preview/orange/trophy-xxl.png" style="height: 50px; width: auto;" /></span></td><td>Tournament Name</td><td>2015</td></tr>
-            <tr><td>1st Place</td><td>Edmonton, AB</td></tr>
+          <tbody id="tournamentsBody">
           </tbody>
         </table>
       </div>
 
       <div id="academies">
         <table class="table">
-          <th colspan="3"><h3>Academies <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addAcademy"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
-          <tr><td rowspan="2"><img src="http://image.flaticon.com/icons/svg/53/53283.svg" style="height: 6%; width: auto;" /></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Surrey, BC</td></tr>
-
-          <tr><td rowspan="2"><img src="http://image.flaticon.com/icons/svg/53/53283.svg" style="height: 6%; width: auto;" /></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Abbotsford, BC</td></tr>
-
-          <tr><td rowspan="2"><img src="http://image.flaticon.com/icons/svg/53/53283.svg" style="height: 6%; width: auto;" /></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Edmonton, AB</td></tr>
+          <th colspan="3"><h3>Academies <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addAcademy"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
+          <tbody id="academiesBody">
+          </tbody>
         </table>
       </div>
 
       <div id="camps">
         <table class="table">
-          <th colspan="3"><h3>Camps <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addCamp"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
-          <tr><td rowspan="2"><img src="http://image.flaticon.com/icons/svg/53/53283.svg" style="height: 6%; width: auto;" /></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Surrey, BC</td></tr>
-
-          <tr><td rowspan="2"><img src="http://image.flaticon.com/icons/svg/53/53283.svg" style="height: 6%; width: auto;" /></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Abbotsford, BC</td></tr>
-
-          <tr><td rowspan="2"><img src="http://image.flaticon.com/icons/svg/53/53283.svg" style="height: 6%; width: auto;" /></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Edmonton, AB</td></tr>
+          <th colspan="3"><h3>Camps <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addCamp"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
+          <tbody id="campsBody">
+          </tbody>
         </table>
       </div>
 
       <div id="compHistory">
         <table class="table">
-          <th colspan="3"><h3>Competition History <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addCompHistory"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
-          <tr><td rowspan="2"><span class="glyphicon glyphicon-star"></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Surrey, BC</td></tr>
-
-          <tr><td rowspan="2"><span class="glyphicon glyphicon-star"></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Abbotsford, BC</td></tr>
-
-          <tr><td rowspan="2"><span class="glyphicon glyphicon-star"></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Edmonton, AB</td></tr>
+          <th colspan="3"><h3>Competition History <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addCompHistory"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
+          <tbody id="compHistoryBody">
+          </tbody>
         </table>
       </div>
 
       <div id="clubs">
         <table class="table">
-          <th colspan="3"><h3>Clubs <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addClub"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
-          <tr><td rowspan="2"><span class="glyphicon glyphicon-star"></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Surrey, BC</td></tr>
-
-          <tr><td rowspan="2"><span class="glyphicon glyphicon-star"></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Abbotsford, BC</td></tr>
-
-          <tr><td rowspan="2"><span class="glyphicon glyphicon-star"></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Edmonton, AB</td></tr>
+         <th colspan="3"><h3>Clubs <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addClub"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
+          <tbody id="clubsBody">
+          </tbody>
         </table>
       </div>
 
-      <div id="clubRankings">
+      <!--<div id="clubRankings">
         <table class="table">
-          <th colspan="3"><h3>Club Rankings <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addClubRanking"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
-          <tr><td rowspan="2"><span class="glyphicon glyphicon-star"></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Surrey, BC</td></tr>
-
-          <tr><td rowspan="2"><span class="glyphicon glyphicon-star"></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Abbotsford, BC</td></tr>
-
-          <tr><td rowspan="2"><span class="glyphicon glyphicon-star"></span></td><td>Tournament Name</td><td>2015</td></tr>
-          <tr><td>Coach Name</td><td>Edmonton, AB</td></tr>
+          <th colspan="3"><h3>Club Rankings <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addClubRanking"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
+          <tbody id="clubRankingsBody">
+          </tbody>
         </table>
-      </div>
+    </div>-->
 
     </div>
   </div>
 
 
-  <!-- Bootstrap Modals -->
+    <!-- Bootstrap Modals -->
 
   <div class="modal fade" id="addLH">
     <div class="modal-dialog" role="document">
@@ -240,53 +152,8 @@
               <input type="date" class="form-control" id="inputYear">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputTeam">Team Name</label>
-              <input type="text" class="form-control" id="inputTeam" placeholder="Enter Team Name Here">
-            </fieldset>
-            <fieldset class="form-group">
               <label for="inputClub">Club Name</label>
               <input type="text" class="form-control" id="inputClub" placeholder="Enter Club Name Here">
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter City Here">
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="inputCity">Country</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter Country Here">
-            </fieldset>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Add</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-  <div class="modal fade" id="addTourney">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title">Add Tournament</h4>
-        </div>
-        <div class="modal-body">
-          <form>
-            <fieldset class="form-group">
-              <label for="inputName">Tournament Name</label>
-              <input type="text" class="form-control" id="inputTName" placeholder="Enter Name Here">
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="inputYear">Year</label>
-              <input type="date" class="form-control" id="inputYear">
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="inputPlacing">Final Placing</label>
-              <input type="text" class="form-control" id="inputPlacing" placeholder="Enter Name Here">
             </fieldset>
             <fieldset class="form-group">
               <label for="inputCity">City</label>
@@ -300,7 +167,49 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Add</button>
+          <button class="btn btn-primary" id="addLeague" data-dismiss="modal">Add</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <div class="modal fade" id="addTourney">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Add Tournament</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <fieldset class="form-group">
+              <label for="inputNameT">Tournament Name</label>
+              <input type="text" class="form-control" id="inputNameT" placeholder="Enter Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputYearT">Year</label>
+              <input type="date" class="form-control" id="inputYearT">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputPlacingT">Final Placing</label>
+              <input type="text" class="form-control" id="inputPlacingT" placeholder="Enter Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCityT">City</label>
+              <input type="text" class="form-control" id="inputCityT" placeholder="Enter City Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCountryT">Country</label>
+              <input type="text" class="form-control" id="inputCountryT" placeholder="Enter Country Here">
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" id="addTournament" data-dismiss="modal">Add</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -319,30 +228,30 @@
         <div class="modal-body">
           <form>
             <fieldset class="form-group">
-              <label for="inputName">Academy Name</label>
-              <input type="text" class="form-control" id="inputAName" placeholder="Enter Academy Name Here">
+              <label for="inputNameA">Academy Name</label>
+              <input type="text" class="form-control" id="inputNameA" placeholder="Enter Academy Name Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="exampleInputEmail1">Year</label>
-              <input type="date" class="form-control" id="inputYear">
+              <label for="inputYearA">Year</label>
+              <input type="date" class="form-control" id="inputYearA">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputTeam">Coach Name</label>
-              <input type="text" class="form-control" id="inputTeam" placeholder="Enter Coach's Name Here">
+              <label for="inputCoachA">Coach Name</label>
+              <input type="text" class="form-control" id="inputCoachA" placeholder="Enter Coach's Name Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter City Here">
+              <label for="inputCityA">City</label>
+              <input type="text" class="form-control" id="inputCityA" placeholder="Enter City Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputCity">Country</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter Country Here">
+              <label for="inputCountryA">Country</label>
+              <input type="text" class="form-control" id="inputCountryA" placeholder="Enter Country Here">
             </fieldset>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Add</button>
+          <button class="btn btn-primary" id="academyAdd" data-dismiss="modal">Add</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -361,30 +270,30 @@
         <div class="modal-body">
           <form>
             <fieldset class="form-group">
-              <label for="inputName">Camp Name</label>
-              <input type="text" class="form-control" id="inputAName" placeholder="Enter Camp Name Here">
+              <label for="inputNameC">Camp Name</label>
+              <input type="text" class="form-control" id="inputNameC" placeholder="Enter Camp Name Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="exampleInputEmail1">Year</label>
-              <input type="date" class="form-control" id="inputYear">
+              <label for="inputYearC">Year</label>
+              <input type="date" class="form-control" id="inputYearC">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputTeam">Coach Name</label>
-              <input type="text" class="form-control" id="inputTeam" placeholder="Enter Coach's Name Here">
+              <label for="inputTeamC">Team Name</label>
+              <input type="text" class="form-control" id="inputTeamC" placeholder="Enter Coach's Name Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter City Here">
+              <label for="inputCityC">City</label>
+              <input type="text" class="form-control" id="inputCityC" placeholder="Enter City Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputCity">Country</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter Country Here">
+              <label for="inputCountryC">Country</label>
+              <input type="text" class="form-control" id="inputCountryC" placeholder="Enter Country Here">
             </fieldset>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Add</button>
+          <button class="btn btn-primary" id="campAdd" data-dismiss="modal">Add</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -403,30 +312,30 @@
         <div class="modal-body">
           <form>
             <fieldset class="form-group">
-              <label for="inputName">Camp Name</label>
-              <input type="text" class="form-control" id="inputAName" placeholder="Enter Name Here">
+              <label for="inputNameCH">Competition Name</label>
+              <input type="text" class="form-control" id="inputNameCH" placeholder="Enter Name Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="exampleInputEmail1">Year</label>
-              <input type="date" class="form-control" id="inputYear">
+              <label for="inputYearCH">Year</label>
+              <input type="date" class="form-control" id="inputYearCH">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputTeam">Coach Name</label>
-              <input type="text" class="form-control" id="inputTeam" placeholder="Enter Coach's Name Here">
+              <label for="inputCoachCH">Coach Name</label>
+              <input type="text" class="form-control" id="inputCoachCH" placeholder="Enter Coach's Name Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter City Here">
+              <label for="inputCityCH">City</label>
+              <input type="text" class="form-control" id="inputCityCH" placeholder="Enter City Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputCity">Country</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter Country Here">
+              <label for="inputCountryCH">Country</label>
+              <input type="text" class="form-control" id="inputCountryCH" placeholder="Enter Country Here">
             </fieldset>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Add</button>
+          <button class="btn btn-primary" id="compHistoryAdd" data-dismiss="modal">Add</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -445,30 +354,30 @@
         <div class="modal-body">
           <form>
             <fieldset class="form-group">
-              <label for="inputName">Camp Name</label>
-              <input type="text" class="form-control" id="inputAName" placeholder="Enter Club Name Here">
+              <label for="inputNameCl">Club Name</label>
+              <input type="text" class="form-control" id="inputNameCl" placeholder="Enter Club Name Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="exampleInputEmail1">Year</label>
-              <input type="date" class="form-control" id="inputYear">
+              <label for="inputYearCl">Year</label>
+              <input type="date" class="form-control" id="inputYearCl">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputTeam">Coach Name</label>
-              <input type="text" class="form-control" id="inputTeam" placeholder="Enter Coach's Name Here">
+              <label for="inputCoachCl">Coach Name</label>
+              <input type="text" class="form-control" id="inputCoachCl" placeholder="Enter Coach's Name Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter City Here">
+              <label for="inputCityCl">City</label>
+              <input type="text" class="form-control" id="inputCityCl" placeholder="Enter City Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputCity">Country</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter Country Here">
+              <label for="inputCountryCl">Country</label>
+              <input type="text" class="form-control" id="inputCountryCl" placeholder="Enter Country Here">
             </fieldset>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Add</button>
+          <button class="btn btn-primary" id="clubAdd" data-dismiss="modal">Add</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -486,39 +395,38 @@
         <div class="modal-body">
           <form>
             <fieldset class="form-group">
-              <label for="inputName">Camp Name</label>
-              <input type="text" class="form-control" id="inputAName" placeholder="Enter Club Name Here">
+              <label for="inputNameCR">Club Name</label>
+              <input type="text" class="form-control" id="inputANameCR" placeholder="Enter Club Name Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="exampleInputEmail1">Year</label>
-              <input type="date" class="form-control" id="inputYear">
+              <label for="inputYearCR">Year</label>
+              <input type="date" class="form-control" id="inputYearCR">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputTeam">Coach Name</label>
-              <input type="text" class="form-control" id="inputTeam" placeholder="Enter Coach's Name Here">
+              <label for="inputCoachCR">Coach Name</label>
+              <input type="text" class="form-control" id="inputTeamCR" placeholder="Enter Coach's Name Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputTeam">Club Ranking</label>
-              <input type="text" class="form-control" id="inputTeam" placeholder="Enter Club Ranking Here">
+              <label for="inputTeamCR">Club Ranking</label>
+              <input type="text" class="form-control" id="inputTeamCR" placeholder="Enter Club Ranking Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter City Here">
+              <label for="inputCityCR">City</label>
+              <input type="text" class="form-control" id="inputCityCR" placeholder="Enter City Here">
             </fieldset>
             <fieldset class="form-group">
-              <label for="inputCity">Country</label>
-              <input type="text" class="form-control" id="inputCity" placeholder="Enter Country Here">
+              <label for="inputCountryCR">Country</label>
+              <input type="text" class="form-control" id="inputCountryCR" placeholder="Enter Country Here">
             </fieldset>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Add</button>
+          <button class="btn btn-primary" id="CRAdd" data-dismiss="modal">Add</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
-
 
 </body>
 </html>

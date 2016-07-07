@@ -16,7 +16,7 @@ window.onload = function() {
 
 
     //get's list of parent's children
-    var setNameID = function(playerInfo) {
+    function setNameID(playerInfo) {
         for(var i = 0; i < playerInfo.length; i++){
             nameList[i] = playerInfo[i].FirstName;
             idList[i] = playerInfo[i].PlayerID;
@@ -24,85 +24,85 @@ window.onload = function() {
         populateNames();
     }
 
-    var getCV = function(CVInfo) {
+    function getCV(CVInfo) {
+        playerCV = [];
         for(var i = 0; i < CVInfo.length; i++) {
             playerCV[i] = CVInfo[i];
         }
-        populateCV();
+        populateCV(playerCV);
     }
 
-    var clearCV = function() {
-        var leagueTable = document.getElementById("leagueHistoryBody");
-        var tournamentTable = document.getElementById("tournamentsBody");
-        var academieTable = document.getElementById("academiesBody");
-        var campTable = document.getElementById("campsbody");
-        var compHistoryTable = document.getElementById("compHistoryBody");
-        var clubTable = document.getElementById("clubsbody");
+    function clearCV() {
+        $("#leagueHistoryBody").empty();
+        $("#tournamentsBody").empty();
+        $("#academiesBody").empty();
+        $("#campsBody").empty();
+        $("#compHistoryBody").empty();
+        $("#clubsBody").empty();
 
-        var birthYear =  document.getElementById("birthYear");
-        var ageTD = document.getElementById("age");
-        var ageGroupTD = document.getElementById("ageGroup");
-        var clubTD = document.getElementById("club");
-        var teamTD = document.getElementById("team");
-        var coachTD = document.getElementById("coach");
-
-        birthYear.innerHTML = "";
-        ageTD.innerHTML = "";
-        ageGroupTD.innerHTML = "";
-        clubTD.innerHTML = "";
-        teamTD.innerHTML = "";
-        coachTD.innerHTML = "";
-
-        if(leagueTable != null){
-            leagueTable.innerHTML = "";
-        }
-        if(tournamentTable != null){
-            tournamentTable.innerHTML = "";
-        }
-        if(academieTable != null){
-            academieTable.innerHTML = "";
-        }
-        if(campTable != null){
-            campTable.innerHTML = "";
-        }
-        if(compHistoryTable != null){
-            compHistoryTable.innerHTML = "";
-        }
-        if(clubTable != null){
-            clubTable.innerHTML = "";
-        }
-
-
+        $("#birthYear").empty();
+        $("#age").empty();
+        $("#ageGroup").empty();
+        $("#club").empty();
+        $("#team").empty();
+        $("#coach").empty();
     }
 
-    var switchCV = function() {
+    function switchCV() {
         if(playerID != 0) {
             clearCV();
         }
 
         playerID = this.id;
         player.setPlayerId(playerID);
-        console.log(player.getPlayerId());
-        request("getCV.php", "&playerID=" + playerID, getCV);
-        //console.log(playerID);
-        //location.reload();
+
+        aja()
+          .method("get")
+          .url('/api/getCV')
+          .queryString({
+            'playerID':playerID
+          })
+          .on('200', function(response){
+            getCV(response);
+          })
+          .go();
     }
 
     //requests for list of parent's children
-    request("getChildren.php", "&email=testParent@test.com", setNameID);
+
+    aja()
+      .method("get")
+      .url('/api/getChildren')
+       .queryString({
+        email:"testParent@test.com"
+      })
+      .on('200', setNameID)
+      .on('404', function(response){
+        console.log("Children not found");
+      })
+      .go();
 
     if(playerID != 0) {
-        request("getCV.php", "&playerID=" + playerID, getCV);
+
+        aja()
+          .method("get")
+          .url('/api/getCV')
+          .queryString({
+            'playerID':playerID
+          })
+          .on('200', function(resposne){
+            getCV(response);
+          })
+          .go();
     }
 
 
-    var populateNames = function() {
+    function populateNames() {
         //sidePanel
         var sidePanel= document.getElementById("sidePanel");
         //panel-group
         var panelGroup = document.createElement("div");
 
-        //request("getCV.php", "&playerID=" + idList[0], getCV);
 
         for(var i = 0; i < nameList.length; i++) {
 
@@ -114,7 +114,7 @@ window.onload = function() {
 
             //panel
             var panel = document.createElement("div");
-            panel.setAttribute("class", "panel panel-danger");
+            panel.setAttribute("class", "panel panel-info");
             panel.setAttribute("id", "panel 1");
 
             //add panel to panel group
@@ -179,7 +179,7 @@ window.onload = function() {
 
             //table in oanel body
             var table = document.createElement("table");
-            table.setAttribute("class", "table table-condensed bg-danger");
+            table.setAttribute("class", "table table-striped table-condensed kidTable");
 
             //adds table to panel body
             panelBody.appendChild(table);
@@ -244,7 +244,7 @@ window.onload = function() {
             campsRow.appendChild(campsData);
             table.appendChild(campsRow);
 
-            //Compitition History
+            //Competition History
             var compRow = document.createElement("tr");
             var compData = document.createElement("td");
 
@@ -252,7 +252,7 @@ window.onload = function() {
             compButton.setAttribute("class", "page-scroll");
             compButton.setAttribute("href", "#compHistory")
 
-            var compH = document.createTextNode("Compitition History");
+            var compH = document.createTextNode("Competition History");
 
             compButton.appendChild(compH);
             compData.appendChild(compButton);
@@ -278,7 +278,7 @@ window.onload = function() {
 
     }
 
-    var populateCV = function() {
+    function populateCV(playerCV) {
         //Basic information table
         var birthYearTD = document.getElementById("birthYear");
         var birthYearText = document.createTextNode(playerCV[0].YearOfBirth);
@@ -319,7 +319,7 @@ window.onload = function() {
             if(playerCV[i].eventType == "Tournaments") {
 
                 eve = document.getElementById("tournamentsBody");
-                image.setAttribute("src", "http://www.iconsdb.com/icons/preview/orange/trophy-xxl.png");
+                image.setAttribute("src", "https://d30y9cdsu7xlg0.cloudfront.net/png/1198-200.png");
                 image.style.height = "50px"
 
             } else if(playerCV[i].eventType == "League History") {
@@ -375,6 +375,7 @@ window.onload = function() {
             var cityTD = document.createElement("td");
             var city = document.createTextNode(playerCV[i].eventCity);
 
+            imgTD.setAttribute("class", "imageCell");
             imgTD.setAttribute("rowspan", "2");
             imgTD.appendChild(image);
 
@@ -394,7 +395,6 @@ window.onload = function() {
             eve.appendChild(row2);
         }
     }
-
 }
 /*
 //when name in list is selected

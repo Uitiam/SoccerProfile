@@ -67,10 +67,54 @@ a:visited {
   background-color: white;
 }
 
-.navButton a {
+.navButton {
   color: white;
 }
 
-.navButton a:visited {
+.navbar a {
   color: white;
+}
+
+.navbar a:hover {
+  text-decoration: none;
+}
+
+.navbar {
+  line-height: 50px;
+}
+
+.addButton {
+  color: black;
+}
+
+th {
+  background-color: black;
+  color: white;
+}
+
+.infoTable th {
+  background-color: white;
+  color: black;
+}
+
+.infoTable tr td:nth-child(odd) {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+.infoTable td {
+  text-align: center;
+}
+
+#infoDiv table {
+  text-align: left;
+}
+
+.imageCell {
+  text-align: center;
+}
+
+.kidTable tr:nth-child(odd) {
+  background-color: #D1EEF7;
 }
