@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Children - Soccer Pro-File</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.polyfill.io/v1/polyfill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aja/0.4.1/aja.min.js"></script>
+
+    <script src="scripts/cv.js"></script>
+    <script src="scripts/fieldset.js"></script>
+    <script src="scripts/player.js"></script>
+</head>
+<body>
+
+  <!-- Navbar (Menu at Top) -->
+
+  <nav class="navbar navbar-inverse" role="navigation" id="navBar" style="margin: 0 0;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navButtons" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Soccer Pro-File</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navButtons">
+        <ul class="nav navbar-nav navbar-right">
+          <a role="button" class="btn-success btn-lg navButton" href="index.html">Home</a>
+          <a role="button" class="btn-success btn-lg navButton" href="about.html">About Us</a>
+          <a role="button" class="btn-success btn-lg navButton" href="contact.html">Contact Us</a>
+          <a role="button" class="btn-success btn-lg navButton" href="login.html">Login</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="col-md-3 col-xs-12" id="sidePanel">
+
+  </div>
+
+  <!-- Info Div -->
+
+  <div class="col-md-9 col-xs-12" id="infoDiv">
+    <div class="container" id="infoScreen">
+
+      <div id="basicInfo">
+        <table class="table infoTable table-condensed">
+          <thead class="thead-inverse">
+            <th colspan="6"><h3>Personal Information</h3></th>
+          </thead>
+          <tbody>
+            <tr><td>First Name</td><td id="firstName"></td><td>Last Name</td><td id="lastName"></td><td>Nationality</td><td id="nationality"></td></tr>
+            <tr><td>Birth Date</td><td id="birthYear"></td><td>Age</td><td id="age"></td><td>Age Group</td><td id="ageGroup"></td></tr>
+            <tr><td>Club</td><td id="club"></td><td>Team</td><td id="team"></td><td>Coach</td><td id="coach"></td></tr>
+        </tbody>
+        </table>
+      </div>
+
+      <br />
+
+      <div id="leagueHistory">
+        <table class="table">
+          <thead class="thead-inverse">
+            <th colspan="3">
+              <h3>League History
+                <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addLH"><span class="glyphicon glyphicon-plus"></span></button>
+                <a role="button" class="btn btn-default" href="#navBar">Back to Top</a>
+                <img src="images/questionMark.png" id="aboutLH" class="btn question-image" href="#" data-content="This lists all of the years or seasons (e.g. 2015/16) that your child has played organized league play with a club (including in-house, i.e. house action)." rel="popover" data-placement="bottom" data-original-title="What is Legaue History?" data-trigger="hover"/>
+              </h3>
+            </th>
+          </thead>
+          <tbody id="leagueHistoryBody">
+          </tbody>
+        </table>
+      </div>
+
+      <div id="tournaments">
+        <table class="table">
+          <thead class="thead-inverse">
+            <th colspan="3">
+              <h3>Tournaments
+                <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addTourney"><span class="glyphicon glyphicon-plus"></span></button>
+                <a role="button" class="btn btn-default" href="#navBar">Back to Top</a>
+                <img src="images/questionMark.png" id="aboutT" class="btn question-image" href="#" data-content="This lists all of the tournaments that your child has played in, including special format tournaments like futsal, beach soccer, street soccer, as well as any travel team experiences." rel="popover" data-placement="bottom" data-original-title="What is Tournaments?" data-trigger="hover"/>
+              </h3>
+            </th>
+          </thead>
+          <tbody id="tournamentsBody">
+          </tbody>
+        </table>
+      </div>
+
+      <div id="academies">
+        <table class="table">
+          <th colspan="3">
+            <h3>Academies
+              <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addAcademy"><span class="glyphicon glyphicon-plus"></span></button>
+            <a role="button" class="btn btn-default" href="#navBar">Back to Top</a>
+            <img src="images/questionMark.png" id="aboutA" class="btn question-image" href="#" data-content="This lists all academies attended by your child, both within and outside of your child's regular club." rel="popover" data-placement="bottom" data-original-title="What is Academies?" data-trigger="hover"/>
+          </h3>
+        </th>
+          <tbody id="academiesBody">
+          </tbody>
+        </table>
+      </div>
+
+      <div id="camps">
+        <table class="table">
+          <th colspan="3">
+            <h3>Camps
+              <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addCamp"><span class="glyphicon glyphicon-plus"></span></button>
+              <a role="button" class="btn btn-default" href="#navBar">Back to Top</a>
+              <img src="images/questionMark.png" id="aboutC" class="btn question-image" href="#" data-content="This lists all camps that your child has attended." rel="popover" data-placement="bottom" data-original-title="What is Camps?" data-trigger="hover"/>
+            </h3>
+          </th>
+          <tbody id="campsBody">
+          </tbody>
+        </table>
+      </div>
+
+      <div id="compHistory">
+        <table class="table">
+          <th colspan="3">
+            <h3>Competition History
+              <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addCompHistory"><span class="glyphicon glyphicon-plus"></span></button>
+              <a role="button" class="btn btn-default" href="#navBar">Back to Top</a>
+              <img src="images/questionMark.png" id="aboutCH" class="btn question-image" href="#" data-content="This lists all cup play, league playoffs, etc." rel="popover" data-placement="bottom" data-original-title="What is Competition History?" data-trigger="hover"/>
+            </h3>
+          </th>
+          <tbody id="compHistoryBody">
+          </tbody>
+        </table>
+      </div>
+
+      <div id="clubs">
+        <table class="table">
+         <th colspan="3">
+           <h3>Clubs
+             <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addClub"><span class="glyphicon glyphicon-plus"></span></button>
+             <a role="button" class="btn btn-default" href="#navBar">Back to Top</a>
+             <img src="images/questionMark.png" id="aboutCl" class="btn question-image" href="#" data-content="This lists the clubs and team names that your child has played for." rel="popover" data-placement="bottom" data-original-title="What is Clubs?" data-trigger="hover"/>
+           </h3>
+         </th>
+          <tbody id="clubsBody">
+          </tbody>
+        </table>
+      </div>
+
+      <!--<div id="clubRankings">
+        <table class="table">
+          <th colspan="3"><h3>Club Rankings <button type="button" class="btn btn-sm addButton" data-toggle="modal" data-target="#addClubRanking"><span class="glyphicon glyphicon-plus"></span></button> <a role="button" class="btn btn-default" href="#navBar">Back to Top</a></h3></th>
+          <tbody id="clubRankingsBody">
+          </tbody>
+        </table>
+    </div>-->
+
+    </div>
+  </div>
+
+
+    <!-- Bootstrap Modals -->
+
+  <div class="modal fade" id="addLH">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Add League History</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <fieldset class="form-group">
+              <label for="inputName">League Name</label>
+              <input type="text" class="form-control" id="inputLName" placeholder="Enter Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="exampleInputEmail1">Year</label>
+              <input type="date" class="form-control" id="inputYear">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputClub">Club Name</label>
+              <input type="text" class="form-control" id="inputClub" placeholder="Enter Club Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCity">City</label>
+              <input type="text" class="form-control" id="inputCity" placeholder="Enter City Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCountry">Country</label>
+              <input type="text" class="form-control" id="inputCountry" placeholder="Enter Country Here">
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" id="addLeague" data-dismiss="modal">Add</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <div class="modal fade" id="addTourney">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Add Tournament</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <fieldset class="form-group">
+              <label for="inputNameT">Tournament Name</label>
+              <input type="text" class="form-control" id="inputNameT" placeholder="Enter Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputYearT">Year</label>
+              <input type="date" class="form-control" id="inputYearT">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputPlacingT">Final Placing</label>
+              <input type="text" class="form-control" id="inputPlacingT" placeholder="Enter Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCityT">City</label>
+              <input type="text" class="form-control" id="inputCityT" placeholder="Enter City Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCountryT">Country</label>
+              <input type="text" class="form-control" id="inputCountryT" placeholder="Enter Country Here">
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" id="addTournament" data-dismiss="modal">Add</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <div class="modal fade" id="addAcademy">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Add Academy</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <fieldset class="form-group">
+              <label for="inputNameA">Academy Name</label>
+              <input type="text" class="form-control" id="inputNameA" placeholder="Enter Academy Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputYearA">Year</label>
+              <input type="date" class="form-control" id="inputYearA">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCoachA">Coach Name</label>
+              <input type="text" class="form-control" id="inputCoachA" placeholder="Enter Coach's Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCityA">City</label>
+              <input type="text" class="form-control" id="inputCityA" placeholder="Enter City Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCountryA">Country</label>
+              <input type="text" class="form-control" id="inputCountryA" placeholder="Enter Country Here">
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" id="academyAdd" data-dismiss="modal">Add</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <div class="modal fade" id="addCamp">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Add Camp</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <fieldset class="form-group">
+              <label for="inputNameC">Camp Name</label>
+              <input type="text" class="form-control" id="inputNameC" placeholder="Enter Camp Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputYearC">Year</label>
+              <input type="date" class="form-control" id="inputYearC">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputTeamC">Team Name</label>
+              <input type="text" class="form-control" id="inputTeamC" placeholder="Enter Coach's Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCityC">City</label>
+              <input type="text" class="form-control" id="inputCityC" placeholder="Enter City Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCountryC">Country</label>
+              <input type="text" class="form-control" id="inputCountryC" placeholder="Enter Country Here">
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" id="campAdd" data-dismiss="modal">Add</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <div class="modal fade" id="addCompHistory">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Add Competition History</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <fieldset class="form-group">
+              <label for="inputNameCH">Competition Name</label>
+              <input type="text" class="form-control" id="inputNameCH" placeholder="Enter Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputYearCH">Year</label>
+              <input type="date" class="form-control" id="inputYearCH">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCoachCH">Coach Name</label>
+              <input type="text" class="form-control" id="inputCoachCH" placeholder="Enter Coach's Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCityCH">City</label>
+              <input type="text" class="form-control" id="inputCityCH" placeholder="Enter City Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCountryCH">Country</label>
+              <input type="text" class="form-control" id="inputCountryCH" placeholder="Enter Country Here">
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" id="compHistoryAdd" data-dismiss="modal">Add</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <div class="modal fade" id="addClub">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Add Club</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <fieldset class="form-group">
+              <label for="inputNameCl">Club Name</label>
+              <input type="text" class="form-control" id="inputNameCl" placeholder="Enter Club Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputYearCl">Year</label>
+              <input type="date" class="form-control" id="inputYearCl">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCoachCl">Coach Name</label>
+              <input type="text" class="form-control" id="inputCoachCl" placeholder="Enter Coach's Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCityCl">City</label>
+              <input type="text" class="form-control" id="inputCityCl" placeholder="Enter City Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCountryCl">Country</label>
+              <input type="text" class="form-control" id="inputCountryCl" placeholder="Enter Country Here">
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" id="clubAdd" data-dismiss="modal">Add</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="modal fade" id="addClubRanking">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Add Club Ranking</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <fieldset class="form-group">
+              <label for="inputNameCR">Club Name</label>
+              <input type="text" class="form-control" id="inputANameCR" placeholder="Enter Club Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputYearCR">Year</label>
+              <input type="date" class="form-control" id="inputYearCR">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCoachCR">Coach Name</label>
+              <input type="text" class="form-control" id="inputTeamCR" placeholder="Enter Coach's Name Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputTeamCR">Club Ranking</label>
+              <input type="text" class="form-control" id="inputTeamCR" placeholder="Enter Club Ranking Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCityCR">City</label>
+              <input type="text" class="form-control" id="inputCityCR" placeholder="Enter City Here">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="inputCountryCR">Country</label>
+              <input type="text" class="form-control" id="inputCountryCR" placeholder="Enter Country Here">
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" id="CRAdd" data-dismiss="modal">Add</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+</body>
+</html>
